@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <resource-ref>
+    <res-ref-name>jdbc/demo</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+    <res-sharing-scope>Shareable</res-sharing-scope>
+  </resource-ref>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>manager</web-resource-name>
+      <url-pattern>/file.jsp</url-pattern>
+      <url-pattern>/upload.do</url-pattern>
+      <url-pattern>/download.do</url-pattern>
+      <url-pattern>/delete.do</url-pattern>
+      <url-pattern>/logout.do</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>manager</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <form-login-config>
+      <form-login-page>/login.html</form-login-page>
+      <form-error-page>/error.html</form-error-page>
+    </form-login-config>
+  </login-config>
+  <security-role>
+    <role-name>manager</role-name>
+  </security-role>
+</web-app>
